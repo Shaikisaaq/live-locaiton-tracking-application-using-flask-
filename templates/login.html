@@ -110,13 +110,16 @@
     <form method="post">
       <label for="username">User name:</label>
       <input type="text" id="username" name="username">
-
+  
       <label for="password">Password:</label>
       <input type="password" id="password" name="password">
-
+  
       <input type="submit" value="LOGIN">
+      {% if error_message %}
+      <p style="color: red;">{{ error_message }}</p>
+      {% endif %}
     </form>
-    <p><a href="{{ url_for('signup') }}">Signup</a>
+    <p><a href="{{ url_for('signup') }}">Signup</a></p>
   </div>
 </body>
 </html>

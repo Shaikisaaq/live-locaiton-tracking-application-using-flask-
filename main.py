@@ -35,6 +35,7 @@ def signup():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    error_message = None
     if request.method == 'POST':
         # Get form data
         username = request.form['username']
@@ -51,12 +52,12 @@ def login():
                 return redirect(url_for('hello'))
             else:
                 # Incorrect password
-                return 'Incorrect password'
+                error_message = 'Incorrect password'
         else:
             # User not found
-            return 'User not found'
+            error_message = 'User not found'
 
-    return render_template('login.html')
+    return render_template('login.html', error_message=error_message)
 
 @app.route('/contact')
 def contact():
