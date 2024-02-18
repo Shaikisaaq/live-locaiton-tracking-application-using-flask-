@@ -1,0 +1,31 @@
+Flask
+pymongo
+
+
+from flask import Flask,redirect,render_template,request,url_for
+import pymongo
+
+
+# Establish connection to MongoDB running locally
+client = pymongo.MongoClient("mongodb://localhost:27017/")
+
+app=Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+if __name__ == '__main__':
+    app.run(debug=True) 
